@@ -25,7 +25,7 @@ mwoutput = io.StringIO()
 
 mwoutput.write ("""Refresh: 1
 Threshold: 999
-Title: Spotter Network Positions - All
+Title: Midwest SSTRC SpotterNetwork Positions
 Font: 1, 11, 1, "Courier New"
 IconFile: 1, 22, 22, 11, 11, "http://www.spotternetwork.org/icon/spotternet.png"
 IconFile: 2, 15, 25, 8, 25, "http://www.spotternetwork.org/icon/arrows.png"
