@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import string, re, io
+import string, re, io, sys
 
 class Spotter:
     def __init__(self):
@@ -37,29 +37,33 @@ line = sninput.readline()
 
 icondict = {'2':'13', '10':'15', '6':'14'}
 
-while line is not '':
-    loc = objectre.search(line)
-    if loc is None:
+try:
+    while line is not '':
+        loc = objectre.search(line)
+        if loc is None:
+            line = sninput.readline()
+            continue
+        spotter = Spotter()
+        spotter.location = loc.groups()
         line = sninput.readline()
-        continue
-    spotter = Spotter()
-    spotter.location = loc.groups()
-    line = sninput.readline()
-    heading = headingre.search(line)
-    if heading is not None:
-        spotter.arrow = heading.group(1)
+        heading = headingre.search(line)
+        if heading is not None:
+            spotter.arrow = heading.group(1)
+            line = sninput.readline()
+        icon = iconre.search(line)
+        spotter.icon = (icondict[icon.group(1)], icon.group(2))
+        mwid = mwre.search(line)
+        if mwid is None:
+            continue
+        spotter.mwid = mwid.group(1)
         line = sninput.readline()
-    icon = iconre.search(line)
-    spotter.icon = (icondict[icon.group(1)], icon.group(2))
-    mwid = mwre.search(line)
-    if mwid is None:
-        continue
-    spotter.mwid = mwid.group(1)
-    line = sninput.readline()
-    text = textre.search(line)
-    spotter.text = text.group(1)
-    spotters.append(spotter)
-    line = sninput.readline()
+        text = textre.search(line)
+        spotter.text = text.group(1)
+        spotters.append(spotter)
+        line = sninput.readline()
+except:
+    print(line)
+    sys.exit(1)
 
 for spotter in spotters:
     mwoutput.write('Object: {},{}\n'.format(spotter.location[0], spotter.location[1]))
