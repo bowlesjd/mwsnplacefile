@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import string, re, io
 
 class Spotter:
@@ -48,7 +50,6 @@ while line is not '':
         spotter.arrow = heading.group(1)
         line = sninput.readline()
     icon = iconre.search(line)
-    print(line)
     spotter.icon = (icondict[icon.group(1)], icon.group(2))
     mwid = mwre.search(line)
     if mwid is None:
