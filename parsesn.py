@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import string, re, io, sys
+from collections import defaultdict
 
 class Spotter:
     def __init__(self):
@@ -14,7 +15,7 @@ spotterre = re.compile("Object: (-?\d+\.\d+),(-?\d+\.\d+)(?:.|\n)*?(?:Icon:) (0,
 objectre = re.compile("Object: (-?\d+\.\d+),(-?\d+\.\d+)(?:.|\n)*?")
 headingre = re.compile("Icon: (0,0,[0-9]+,2,.*)(?:.|\n)*?")
 #iconre = re.compile("Icon: ([^\"]*),\"([^\"]*)\"(?:.|\n)*?")
-iconre = re.compile("Icon: 0,0,000,6,([0-9]+),\"(.*)\"(?:.|\n)*?")
+iconre = re.compile("Icon: 0,0,000,[61],([0-9]+),\"(.*)\"(?:.|\n)*?")
 textre = re.compile("Text: (.*)(?:.|\n)*?")
 mwre = re.compile("(MW[0-9]{3})")
 
@@ -35,7 +36,9 @@ spotters = []
 
 line = sninput.readline()
 
-icondict = {'2':'13', '10':'15', '6':'14'}
+icondict = defaultdict(lambda: '13')
+
+icondict.update({'2':'13', '10':'15', '6':'14', '19': '20'})
 
 try:
     while line is not '':
