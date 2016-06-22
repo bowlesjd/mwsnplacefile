@@ -12,7 +12,7 @@ class Spotter:
 
 spotterre = re.compile("Object: (-?\d+\.\d+),(-?\d+\.\d+)(?:.|\n)*?(?:Icon:) (0,0,[0-9]{3},2,.*)?(?:.|\n)*?Icon: ([^\"]*),\"([^\"]*)\"(?:.|\n)*?Text: (.*)(?:.|\n)*?End:")
 objectre = re.compile("Object: (-?\d+\.\d+),(-?\d+\.\d+)(?:.|\n)*?")
-headingre = re.compile("Icon: (0,0,[0-9]{3},2,.*)(?:.|\n)*?")
+headingre = re.compile("Icon: (0,0,[0-9]+,2,.*)(?:.|\n)*?")
 #iconre = re.compile("Icon: ([^\"]*),\"([^\"]*)\"(?:.|\n)*?")
 iconre = re.compile("Icon: 0,0,000,6,([0-9]+),\"(.*)\"(?:.|\n)*?")
 textre = re.compile("Text: (.*)(?:.|\n)*?")
@@ -66,6 +66,8 @@ for spotter in spotters:
     if spotter.arrow is not None:
         mwoutput.write('Icon: {}\n'.format(spotter.arrow))
     mwoutput.write('Icon: 0,0,000,1,{},\"{}\"\nText: {}\nText: 15, 20, 1, \"{}\"\nEnd:\n'.format(spotter.icon[0], spotter.icon[1], spotter.text, spotter.mwid))
+
+mwoutput.write('\n')
 
 mwfile = open("mw.txt", "w")
 mwoutput.seek(0)
