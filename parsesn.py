@@ -11,7 +11,7 @@ class Spotter:
         self.text = None
         self.mwid = None
 
-spotterre = re.compile("Object: (-?\d+\.\d+),(-?\d+\.\d+)(?:.|\n)*?(?:Icon:) (0,0,[0-9]{3},2,.*)?(?:.|\n)*?Icon: ([^\"]*),\"([^\"]*)\"(?:.|\n)*?Text: (.*)(?:.|\n)*?End:")
+#spotterre = re.compile("Object: (-?\d+\.\d+),(-?\d+\.\d+)(?:.|\n)*?(?:Icon:) (0,0,[0-9]{3},2,.*)?(?:.|\n)*?Icon: ([^\"]*),\"([^\"]*)\"(?:.|\n)*?Text: (.*)(?:.|\n)*?End:")
 objectre = re.compile("Object: (-?\d+\.\d+),(-?\d+\.\d+)(?:.|\n)*?")
 headingre = re.compile("Icon: (0,0,[0-9]+,2,.*)(?:.|\n)*?")
 #iconre = re.compile("Icon: ([^\"]*),\"([^\"]*)\"(?:.|\n)*?")
@@ -30,15 +30,16 @@ Title: Midwest SSTRC SpotterNetwork Positions
 Font: 1, 11, 1, "Courier New"
 IconFile: 1, 22, 22, 11, 11, "http://www.spotternetwork.org/icon/spotternet.png"
 IconFile: 2, 15, 25, 8, 25, "http://www.spotternetwork.org/icon/arrows.png"
-IconFile: 6, 22, 22, 11, 11, "http://www.spotternetwork.org/icon/spotternet_new.png"\n\n""")
+IconFile: 6, 22, 22, 11, 11, "http://www.spotternetwork.org/icon/spotternet_new.png"
+IconFile: 3, 22, 22, 11, 11, "http://grx.wockets.org/mwicons.png"\n\n""")
 
 spotters = []
 
 line = sninput.readline()
 
-icondict = defaultdict(lambda: '13')
+icondict = defaultdict(lambda: '1')
 
-icondict.update({'2':'13', '10':'15', '6':'14', '19': '20'})
+icondict.update({'2':'1', '10':'2', '6':'3', '19': '1'})
 
 try:
     while line is not '':
@@ -72,7 +73,7 @@ for spotter in spotters:
     mwoutput.write('Object: {},{}\n'.format(spotter.location[0], spotter.location[1]))
     if spotter.arrow is not None:
         mwoutput.write('Icon: {}\n'.format(spotter.arrow))
-    mwoutput.write('Icon: 0,0,000,1,{},\"{}\"\nText: {}\nText: 15, 20, 1, \"{}\"\nEnd:\n'.format(spotter.icon[0], spotter.icon[1], spotter.text, spotter.mwid))
+    mwoutput.write('Icon: 0,0,000,3,{},\"{}\"\nText: {}\nText: 15, 20, 1, \"{}\"\nEnd:\n'.format(spotter.icon[0], spotter.icon[1], spotter.text, spotter.mwid))
 
 mwoutput.write('\n')
 
