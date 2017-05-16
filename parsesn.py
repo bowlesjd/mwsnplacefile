@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import string, re, io, sys
+import string, re, io, sys, traceback
 from collections import defaultdict
 
 class Spotter:
@@ -65,8 +65,8 @@ try:
         spotter.text = text.group(1)
         spotters.append(spotter)
         line = sninput.readline()
-except:
-    print(line)
+except Exception:
+    #traceback.print_exc(file=sys.stdout)
     sys.exit(1)
 
 for spotter in spotters:
