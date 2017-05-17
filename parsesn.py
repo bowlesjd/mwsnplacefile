@@ -18,7 +18,7 @@ headingre = re.compile("Icon: (0,0,[0-9]+,2,.*)(?:.|\n)*?")
 #iconre = re.compile("Icon: ([^\"]*),\"([^\"]*)\"(?:.|\n)*?")
 iconre = re.compile("Icon: 0,0,000,[61],([0-9]+),\"(.*)\"(?:.|\n)*?")
 textre = re.compile("Text: (.*)(?:.|\n)*?")
-crewre = re.compile("(John Bowles)|(Dan Starker)|(Taylor DeWinter)|(Rob Morris)|(Josh Ringelstetter)|(Jacob Ela)")
+crewre = re.compile("(John Bowles)|(Dan Starker)|(Taylor DeWinter)|(Rob Morris)|(Josh Ringelstetter)|(Jacob Ela)|(Mike Birch)")
 mwre = re.compile("(MW[0-9]{3})")
 
 snfile = open("gr.txt")
