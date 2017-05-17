@@ -83,7 +83,7 @@ try:
         spotters.append(spotter)
         line = sninput.readline()
 except Exception:
-    traceback.print_exc(file=sys.stdout)
+    #traceback.print_exc(file=sys.stdout)
     sys.exit(1)
 
 for spotter in spotters:
